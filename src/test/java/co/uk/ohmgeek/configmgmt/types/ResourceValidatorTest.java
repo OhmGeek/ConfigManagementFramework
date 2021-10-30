@@ -42,7 +42,7 @@ class ResourceValidatorTest {
             validator.isValid(new Object());
             fail("Should fail as Object isn't a configuration resource.");
         } catch (ValidationException e) {
-            System.out.println(e.getMessage());
+            assertThat(e.getMessage(), containsString("Resource Object isn't annotated as a ConfigurationResource!"));
         }
     }
 
