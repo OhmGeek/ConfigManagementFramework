@@ -2,6 +2,8 @@ package co.uk.ohmgeek.configmgmt.types;
 
 import co.uk.ohmgeek.configmgmt.api.ConfigurationResource;
 import org.reflections.Reflections;
+import org.reflections.util.ClasspathHelper;
+import org.reflections.util.ConfigurationBuilder;
 
 import java.util.Map;
 import java.util.Set;
@@ -14,8 +16,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class TypeProvider {
     private final Map<String, Class<?>> typeMap;
 
-    public TypeProvider() {
-        Reflections reflections = new Reflections("co.uk.ohmgeek.configmgmt.api");
+    public TypeProvider(String namespace) {
+        Reflections reflections = new Reflections(namespace);
 
         Set<Class<?>> annotatedTypes = reflections.getTypesAnnotatedWith(ConfigurationResource.class);
         typeMap = new ConcurrentHashMap<>();

@@ -9,8 +9,8 @@ import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 class TypeProviderTest {
-
-    private final TypeProvider typeProvider = new TypeProvider();
+    // Define a typeprovider within a specific namespace (which binds to Java package).
+    private final TypeProvider typeProvider = new TypeProvider("co.uk.ohmgeek.configmgmt.types");
 
     @Test
     public void shouldResolveAnnotatedResources() {
